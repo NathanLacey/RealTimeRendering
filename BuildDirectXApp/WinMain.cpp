@@ -1,18 +1,21 @@
 #include <Windows.h>
+//Added Icon file, it creates a resource.h file to load the icon
+#include "resource.h"
 #include <cstdlib>
 #include <string>
-
+#include <cstdint>
 
 // Global variables
 
 // The main window class name.
 static std::wstring szWindowClass = L"DirectXTest";
 // The string that appears in the application's title bar.
-static std::wstring szTitle = L"Win32 Guided Tour Application";
+static std::wstring szTitle = L"DirectX Guided Tour Application";
 HINSTANCE hInst;
+const uint32_t screenWidth = 960;
+const uint32_t screenHeight = 540;
 
-
-// Forward declarations of functions included in this code module:
+// Forward declarations of functions included in this code module
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
 int WINAPI WinMain(HINSTANCE hInstance,
@@ -20,21 +23,25 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	LPSTR lpCmdLine,
 	int nCmdShow)
 {
+	//Creates a windows class struct that the user can make a description of the window, icon,
+	//style, cursor image, etc
 	WNDCLASSEX wcex;
-
 	wcex.cbSize = sizeof(WNDCLASSEX);
 	wcex.style = CS_HREDRAW | CS_VREDRAW;
 	wcex.lpfnWndProc = WndProc;
 	wcex.cbClsExtra = 0;
 	wcex.cbWndExtra = 0;
 	wcex.hInstance = hInstance;
-	wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_APPLICATION));
+	//wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_APPLICATION));
+	// OLD version, i commented it out to show you what i changed it to, to give it an icon file
+	wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON1));
 	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
 	wcex.lpszMenuName = NULL;
 	wcex.lpszClassName = szWindowClass.c_str();
-	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_APPLICATION));
+	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_ICON1));
 
+	//registers the class, if registration failed
 	if (!RegisterClassEx(&wcex))
 	{
 		MessageBox(NULL,
@@ -44,6 +51,16 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
 		return 1;
 	}
+	//When you specify window width and height it adds the borders to it, in rendering we want
+	//the exact size of the client area specified, AdjustWindowRect calculates the window size
+	//to accurately display the proper client height and width
+	RECT r = { 0, 0, static_cast<long>(screenWidth), static_cast<long>(screenHeight) };
+	AdjustWindowRect(&r, WS_OVERLAPPEDWINDOW, false);
+	uint32_t width = r.right - r.left;
+	uint32_t height = r.bottom - r.top;
+
+	uint32_t x = GetSystemMetrics(SM_CXSCREEN) / 2 - width / 2;
+	uint32_t y = GetSystemMetrics(SM_CYSCREEN) / 2 - height / 2;
 
 	hInst = hInstance; // Store instance handle in our global variable
 
@@ -61,8 +78,8 @@ int WINAPI WinMain(HINSTANCE hInstance,
 		szWindowClass.c_str(),
 		szTitle.c_str(),
 		WS_OVERLAPPEDWINDOW,
-		CW_USEDEFAULT, CW_USEDEFAULT,
-		500, 100,
+		x, y,
+		width, height,
 		NULL,
 		NULL,
 		hInstance,
@@ -87,11 +104,21 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	UpdateWindow(hWnd);
 
 	// Main message loop:
-	MSG msg;
-	while (GetMessage(&msg, NULL, 0, 0))
+	MSG msg = { 0 };
+	/*while (GetMessage(&msg, NULL, 0, 0))*/
+	//Instead of a GetMessage function we use peek function, if there are no windows messages
+	//to handle, the game code will run instead
+	while(WM_QUIT != msg.message)
 	{
-		TranslateMessage(&msg);
-		DispatchMessage(&msg);
+		if (PeekMessage(&msg, NULL, NULL, NULL, PM_REMOVE))
+		{
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+		else
+		{
+			//TODO:: Add game code here
+		}
 	}
 
 	return (int)msg.wParam;
@@ -101,32 +128,10 @@ int WINAPI WinMain(HINSTANCE hInstance,
 //  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
 //
 //  PURPOSE:  Processes messages for the main window.
-//
-//  WM_PAINT    - Paint the main window
-//  WM_DESTROY  - post a quit message and return
-//
-//
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	PAINTSTRUCT ps;
-	HDC hdc;
-	std::wstring greeting = L"Hello, World!";
-
 	switch (message)
 	{
-	case WM_PAINT:
-		hdc = BeginPaint(hWnd, &ps);
-
-		// Here your application is laid out.
-		// For this introduction, we just print out "Hello, World!"
-		// in the top left corner.
-		TextOut(hdc,
-			5, 5,
-			greeting.c_str(), greeting.length());
-		// End application-specific layout section.
-
-		EndPaint(hWnd, &ps);
-		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		break;
