@@ -8,9 +8,9 @@
 // Global variables
 
 // The main window class name.
-static std::wstring szWindowClass = L"DirectXTest";
+static std::wstring szWindowClass = L"RealTimeRenderer";
 // The string that appears in the application's title bar.
-static std::wstring szTitle = L"DirectX Guided Tour Application";
+static std::wstring szTitle = L"Real Time Rendering Project";
 HINSTANCE hInst;
 const uint32_t screenWidth = 960;
 const uint32_t screenHeight = 540;
@@ -46,7 +46,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	{
 		MessageBox(NULL,
 			L"Call to RegisterClassEx failed!",
-			L"DirectX Guided Tour",
+			L"Real Time Rendering Project",
 			NULL);
 
 		return 1;
@@ -90,7 +90,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	{
 		MessageBox(NULL,
 			L"Call to CreateWindow failed!",
-			L"DirectX Guided Tour",
+			L"Real Time Rendering Project",
 			NULL);
 
 		return 1;
