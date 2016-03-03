@@ -6,7 +6,6 @@
 #include <cstdint>
 
 // Global variables
-
 // The main window class name.
 
 //TODO: remove global statics and move into a class
