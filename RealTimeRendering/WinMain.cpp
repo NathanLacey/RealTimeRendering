@@ -8,6 +8,8 @@
 // Global variables
 
 // The main window class name.
+
+//TODO: remove global statics and move into a class
 static std::wstring szWindowClass = L"RealTimeRenderer";
 // The string that appears in the application's title bar.
 static std::wstring szTitle = L"Real Time Rendering Project";
