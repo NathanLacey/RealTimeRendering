@@ -1,12 +1,16 @@
+//=====================================================================================
+// WindowsClass.h
+// Windows Class Object. Designed to encapsulate windows creation and clean 
+// the winMain function
+//=====================================================================================
 #include "WindowsClass.h"
-
 
 
 WindowsClass::WindowsClass(HINSTANCE &hInstance) :
 	screenWidth_(960),
 	screenHeight_(540),
-	szWindowClass_(L"RealTimeRenderer"),
-	szTitle_(L"Real Time Rendering Project"),
+	windowClass_(L"RealTimeRenderer"),
+	appTitle_(L"Real Time Rendering Project"),
 	hInstance_(hInstance)
 {
 
@@ -44,8 +48,8 @@ bool WindowsClass::AdjustSizeAndCreateWindow()
 	// hInstance: the first parameter from WinMain
 	// NULL: not used in this application
 	hWnd_ = CreateWindow(
-		szWindowClass_.c_str(),
-		szTitle_.c_str(),
+		windowClass_.c_str(),
+		appTitle_.c_str(),
 		WS_OVERLAPPEDWINDOW,
 		wndPosx, wndPosy,
 		wndWidth, wndHeight,
@@ -83,7 +87,7 @@ bool WindowsClass::Initialize()
 	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
 	wcex.lpszMenuName = NULL;
-	wcex.lpszClassName = szWindowClass_.c_str();
+	wcex.lpszClassName = windowClass_.c_str();
 	wcex.hIconSm = LoadIcon(hInstance_, MAKEINTRESOURCE(IDI_ICON1));
 
 	//registers the class, if registration failed

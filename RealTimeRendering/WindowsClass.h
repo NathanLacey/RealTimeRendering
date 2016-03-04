@@ -14,10 +14,14 @@
 
 class WindowsClass
 {
+//=====================================================================================
+// Constructors, Destructors, Copy Constructors and Move Constructors
+//=====================================================================================
 public:
 	WindowsClass() = delete; //no default constructor
 	WindowsClass(HINSTANCE &hInstance);
 	~WindowsClass();
+
 
 //=====================================================================================
 // Variables
@@ -25,8 +29,8 @@ public:
 private:
 	uint32_t screenWidth_;
 	uint32_t screenHeight_;
-	std::wstring szWindowClass_;
-	std::wstring szTitle_;
+	std::wstring windowClass_;
+	std::wstring appTitle_;
 	HINSTANCE hInstance_;
 	HWND hWnd_;
 
