@@ -3,7 +3,6 @@
 // Windows Class Object. Designed to encapsulate windows creation and clean 
 // the winMain function
 //=====================================================================================
-
 #pragma once
 #include <Windows.h>
 #include <cstdlib>
@@ -12,35 +11,38 @@
 //Added Icon file, it creates a resource.h file to load the icon
 #include "resource.h"
 
-class WindowsClass
+namespace RTR
 {
-//=====================================================================================
-// Constructors, Destructors, Copy Constructors and Move Constructors
-//=====================================================================================
-public:
-	WindowsClass() = delete; //no default constructor
-	WindowsClass(HINSTANCE &hInstance);
-	~WindowsClass();
+	class WindowsClass
+	{
+		//=====================================================================================
+		// Constructors, Destructors, Copy Constructors and Move Constructors
+		//=====================================================================================
+	public:
+		WindowsClass() = delete; //no default constructor
+		WindowsClass(HINSTANCE &hInstance);
+		~WindowsClass();
 
 
-//=====================================================================================
-// Variables
-//=====================================================================================
-private:
-	uint32_t screenWidth_;
-	uint32_t screenHeight_;
-	std::wstring windowClass_;
-	std::wstring appTitle_;
-	HINSTANCE hInstance_;
-	HWND hWnd_;
+		//=====================================================================================
+		// Variables
+		//=====================================================================================
+	private:
+		uint32_t screenWidth_;
+		uint32_t screenHeight_;
+		std::wstring windowClass_;
+		std::wstring appTitle_;
+		HINSTANCE hInstance_;
+		HWND hWnd_;
 
-//=====================================================================================
-// Member Functions
-//=====================================================================================
-private:
-	bool AdjustSizeAndCreateWindow();
-public:
-	bool Initialize();
-	int Run();
-};
+		//=====================================================================================
+		// Member Functions
+		//=====================================================================================
+	private:
+		bool AdjustSizeAndCreateWindow();
+	public:
+		bool Initialize();
+		int Run();
+	};
+}
 

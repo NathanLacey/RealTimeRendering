@@ -5,14 +5,13 @@
 #include "WindowsClass.h"
 
 
-
 int WINAPI WinMain(HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,
 	LPSTR lpCmdLine,
 	int nCmdShow)
 {
 	//Instantiate and initialize windows class
-	WindowsClass App(hInstance);
+	RTR::WindowsClass App(hInstance);
 	if (!App.Initialize())
 	{
 		return 1;
