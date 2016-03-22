@@ -13,19 +13,49 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\WIndows">
-      <UniqueIdentifier>{ae9041db-e4b9-4f66-aecb-72dca8d48028}</UniqueIdentifier>
+    <Filter Include="Source Files\Rendering">
+      <UniqueIdentifier>{fbb3cd06-b49a-4c40-9e76-f3ababb2356d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Windows">
+    <Filter Include="Header Files\Rendering">
+      <UniqueIdentifier>{cedeeb0a-ec4d-4045-901e-6b9f1416f307}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameEngine">
+      <UniqueIdentifier>{dcd88189-dec0-4132-bb2e-69b2af8ff920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameEngine">
+      <UniqueIdentifier>{818a689d-1359-4226-bc0b-5caabc02daa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Platform">
+      <UniqueIdentifier>{25a1e4e8-a57b-45c7-8d87-a160022bc65b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Platform\Windows">
       <UniqueIdentifier>{9ca46317-d3ca-4bcc-b148-f9c0d7a23341}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Platform">
+      <UniqueIdentifier>{0511ddca-45a5-4765-9e7d-e6d30a081f40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Platform\WIndows">
+      <UniqueIdentifier>{ae9041db-e4b9-4f66-aecb-72dca8d48028}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RTR\Windows\AppBuilder.h">
-      <Filter>Header Files\WIndows</Filter>
+    <ClInclude Include="RTR\Rendering\Renderer.h">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="RTR\Platform\Windows\WinBuilder.h">
+      <Filter>Header Files\Platform\WIndows</Filter>
+    </ClInclude>
+    <ClInclude Include="RTR\GameEngine\RTREngine.h">
+      <Filter>Header Files\GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="RTR\Platform\Platform.h">
+      <Filter>Header Files\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="RTR\Platform\AppBuilder.h">
+      <Filter>Header Files\Platform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -39,11 +69,14 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="RTR\Windows\WinMain.cpp">
-      <Filter>Source Files\Windows</Filter>
+    <ClCompile Include="RTR\Platform\Windows\WinBuilder.cpp">
+      <Filter>Source Files\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="RTR\Windows\AppBuilder.cpp">
-      <Filter>Source Files\Windows</Filter>
+    <ClCompile Include="RTR\Platform\Windows\WinMain.cpp">
+      <Filter>Source Files\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="RTR\GameEngine\RTREngine.cpp">
+      <Filter>Source Files\GameEngine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

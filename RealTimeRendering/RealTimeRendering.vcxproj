@@ -152,7 +152,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
-    <ClInclude Include="RTR\Windows\AppBuilder.h" />
+    <ClInclude Include="RTR\GameEngine\RTREngine.h" />
+    <ClInclude Include="RTR\Platform\AppBuilder.h" />
+    <ClInclude Include="RTR\Platform\Platform.h" />
+    <ClInclude Include="RTR\Platform\Windows\WinBuilder.h" />
+    <ClInclude Include="RTR\Rendering\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon1.ico" />
@@ -161,8 +165,9 @@
     <ResourceCompile Include="RealTimeRendering.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="RTR\Windows\AppBuilder.cpp" />
-    <ClCompile Include="RTR\Windows\WinMain.cpp" />
+    <ClCompile Include="RTR\GameEngine\RTREngine.cpp" />
+    <ClCompile Include="RTR\Platform\Windows\WinBuilder.cpp" />
+    <ClCompile Include="RTR\Platform\Windows\WinMain.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

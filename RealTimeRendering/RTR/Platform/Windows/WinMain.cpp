@@ -2,8 +2,8 @@
 // WinMain.cpp
 // Main Function. Calls windows 
 //=====================================================================================
-#include "RTR\Windows\AppBuilder.h"
-
+#include <RTR/GameEngine/RTREngine.h>
+#if RTR_PLATFORM == RTR_PLATFORM_WINDOWS
 
 int WINAPI WinMain(HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,
@@ -11,12 +11,13 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	int nCmdShow)
 {
 	//Instantiate and initialize windows class
-	RTR::Windows::AppBuilder App(hInstance);
-	if (!App.Initialize())
+	RTR::GameEngine::RTREngine Game(hInstance);
+	if (!Game.Initialize())
 	{
 		return 1;
 	}
 	//Run Message Loop
-	int msg = App.Run();
+	int msg = Game.Run();
 	return msg;
 }
+#endif
