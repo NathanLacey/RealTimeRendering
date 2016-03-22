@@ -2,7 +2,7 @@
 // WinMain.cpp
 // Main Function. Calls windows 
 //=====================================================================================
-#include "WindowsClass.h"
+#include "RTR\Windows\AppBuilder.h"
 
 
 int WINAPI WinMain(HINSTANCE hInstance,
@@ -11,7 +11,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	int nCmdShow)
 {
 	//Instantiate and initialize windows class
-	RTR::WindowsClass App(hInstance);
+	RTR::Windows::AppBuilder App(hInstance);
 	if (!App.Initialize())
 	{
 		return 1;
