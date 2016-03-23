@@ -8,13 +8,13 @@
 #include <memory>
 
 #include <RTR/Platform/Platform.h>
-#include <RTR/Platform/AppBuilder.h>
 #include <RTR/Rendering/Renderer.h>
+#include <RTR/Platform/AppBuilder.h>
+
 #if RTR_PLATFORM == RTR_PLATFORM_WINDOWS
-#include <RTR/Platform/Windows/WinBuilder.h>
+#include <Windows.h>
 #endif
 
-class Renderer;
 namespace RTR
 {
 	namespace GameEngine
@@ -30,9 +30,11 @@ namespace RTR
 			bool Initialize();
 			void Shutdown();
 			int Run();
+			void Update(const float& deltaTime);
+			void Render();
 		private:
-			std::unique_ptr<RTR::Platform::AppBuilder> app_;
-			RTR::Rendering::Renderer *renderer_;
+			std::unique_ptr<Platform::AppBuilder> app_;
+			std::unique_ptr<Rendering::Renderer> renderer_;
 		};
 	}
 }

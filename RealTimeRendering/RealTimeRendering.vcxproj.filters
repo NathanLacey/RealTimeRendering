@@ -37,6 +37,9 @@
     <Filter Include="Header Files\Platform\WIndows">
       <UniqueIdentifier>{ae9041db-e4b9-4f66-aecb-72dca8d48028}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Rendering\DirectX">
+      <UniqueIdentifier>{76db9904-fc77-4349-804d-8021c9e34296}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -56,6 +59,9 @@
     </ClInclude>
     <ClInclude Include="RTR\Platform\AppBuilder.h">
       <Filter>Header Files\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="RTR\Rendering\DirectX\DirectXRenderer.h">
+      <Filter>Header Files\Rendering\DirectX</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +83,9 @@
     </ClCompile>
     <ClCompile Include="RTR\GameEngine\RTREngine.cpp">
       <Filter>Source Files\GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="RTR\Rendering\DirectX\DirectXRenderer.cpp">
+      <Filter>Source Files\Rendering</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

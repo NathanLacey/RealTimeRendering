@@ -10,15 +10,18 @@
 #include <cstdint>
 //Added Icon file, it creates a resource.h file to load the icon
 #include "resource.h"
+#include <RTR/Platform/Platform.h>
 #include <RTR/Platform/AppBuilder.h>
+
 #if RTR_PLATFORM == RTR_PLATFORM_WINDOWS
+
 namespace RTR
 {
 	namespace Platform
 	{
 		namespace Windows
 		{
-			class WinBuilder : public RTR::Platform::AppBuilder
+			class WinBuilder : public AppBuilder
 			{
 				//=====================================================================================
 				// Constructors, Destructors, Copy Constructors and Move Constructors
@@ -26,7 +29,7 @@ namespace RTR
 			public:
 				WinBuilder() = delete; //no default constructor
 				WinBuilder(HINSTANCE &hInstance);
-				virtual ~WinBuilder() override;
+				virtual ~WinBuilder() final override;
 
 
 				//=====================================================================================
@@ -37,7 +40,7 @@ namespace RTR
 				uint32_t screenHeight_;
 				std::wstring windowClass_;
 				std::wstring appTitle_;
-				HINSTANCE hInstance_;
+				HINSTANCE& hInstance_;
 				HWND hWnd_;
 
 				//=====================================================================================
@@ -47,7 +50,7 @@ namespace RTR
 				virtual bool AdjustSizeAndCreateWindow() final override;
 			public:
 				virtual bool Initialize() final override;
-				virtual int Run() final override;
+				virtual int Run(GameEngine::RTREngine* const) final override;
 			};
 		}
 	}

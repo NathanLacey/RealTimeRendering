@@ -14,12 +14,12 @@ namespace RTR
 		{
 		public:
 			Renderer() = default;
-			virtual ~Renderer() {}
-			
+			virtual ~Renderer() = default;			
 			virtual bool Initialize() = 0;
 			virtual void Shutdown() = 0;
 			virtual void OnResize() = 0;
-			virtual void Render() = 0;
+			virtual void BeginFrame() = 0;
+			virtual void EndFrame() = 0;
 		};
 	}
 }

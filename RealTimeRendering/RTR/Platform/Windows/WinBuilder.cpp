@@ -3,8 +3,9 @@
 // Windows Class Object. Designed to encapsulate windows creation and clean 
 // the winMain function
 //=====================================================================================
-#include "RTR/Platform/Windows/WinBuilder.h"
+#include <RTR/Platform/Windows/WinBuilder.h>
 #if RTR_PLATFORM == RTR_PLATFORM_WINDOWS
+#include <RTR/GameEngine/RTREngine.h>
 namespace RTR
 {
 	namespace Platform
@@ -119,7 +120,7 @@ namespace RTR
 				return true;
 			}
 
-			int WinBuilder::Run()
+			int WinBuilder::Run(GameEngine::RTREngine* const engine)
 			{
 				// Main message loop:
 				MSG msg = { 0 };
@@ -135,7 +136,8 @@ namespace RTR
 					}
 					else
 					{
-						//TODO:: Add game code here
+						engine->Update(0.0f);
+						engine->Render();
 					}
 				}
 
