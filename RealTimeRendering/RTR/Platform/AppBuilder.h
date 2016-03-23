@@ -18,7 +18,6 @@ namespace RTR
 		public:
 			AppBuilder() = default;
 			virtual ~AppBuilder() = default;
-			virtual bool AdjustSizeAndCreateWindow() = 0;
 			virtual bool Initialize() = 0;
 			virtual int Run(GameEngine::RTREngine* const) = 0;
 		};

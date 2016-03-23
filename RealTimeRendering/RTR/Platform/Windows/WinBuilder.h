@@ -47,7 +47,7 @@ namespace RTR
 				// Member Functions
 				//=====================================================================================
 			private:
-				virtual bool AdjustSizeAndCreateWindow() final override;
+				bool AdjustSizeAndCreateWindow();
 			public:
 				virtual bool Initialize() final override;
 				virtual int Run(GameEngine::RTREngine* const) final override;
