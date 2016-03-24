@@ -2,7 +2,7 @@
 // DirectXRender.cpp
 // Main Rendering class that initializes DirectX and manages frame buffers 
 //=====================================================================================
-#include "DirectXRenderer.h"
+#include <RTR/Rendering/DirectX/DirectXRenderer.h>
 
 namespace RTR
 {

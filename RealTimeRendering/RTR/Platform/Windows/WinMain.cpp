@@ -18,6 +18,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	}
 	//Run Message Loop
 	int msg = Game.Run();
+	Game.Shutdown();
 	return msg;
 }
 #endif

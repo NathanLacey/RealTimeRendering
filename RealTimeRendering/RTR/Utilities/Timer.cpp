@@ -6,6 +6,9 @@ namespace RTR
 {
 	namespace Utilities
 	{
+		//=====================================================================================
+		// Constructors, Destructors, Copy Constructors and Move Constructors
+		//=====================================================================================
 		Timer::Timer() :
 			deltaTime_(-1.0),
 			pausedTime_(0),
@@ -15,6 +18,9 @@ namespace RTR
 		{
 		}
 
+		//=====================================================================================
+		// Member Functions
+		//=====================================================================================
 		float Timer::TotalTimeSeconds() const
 		{
 			microseconds elapsedTime;
