@@ -1,3 +1,7 @@
+//=====================================================================================
+// DirectXRender.cpp
+// Main Rendering class that initializes DirectX and manages frame buffers 
+//=====================================================================================
 #include "DirectXRenderer.h"
 
 namespace RTR
@@ -6,6 +10,9 @@ namespace RTR
 	{
 		namespace DirectX
 		{
+			//=====================================================================================
+			// Constructors, Destructors, Copy Constructors and Move Constructors
+			//=====================================================================================
 			DirectXRenderer::DirectXRenderer(HINSTANCE & hInstance) :
 				hInstance_(hInstance)
 			{
@@ -15,6 +22,9 @@ namespace RTR
 			{
 			}
 
+			//=====================================================================================
+			// Member Functions
+			//=====================================================================================
 			bool DirectXRenderer::Initialize()
 			{
 				return true;

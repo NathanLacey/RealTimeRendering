@@ -12,6 +12,10 @@ namespace RTR
 	{
 		namespace Windows
 		{
+			//=====================================================================================
+			// Constructors, Destructors, Copy Constructors and Move Constructors
+			//=====================================================================================
+
 			WinBuilder::WinBuilder(HINSTANCE &hInstance) : 
 				AppBuilder(),
 				screenWidth_(960),
@@ -30,6 +34,9 @@ namespace RTR
 			// Forward declarations of functions included in this code module
 			LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
+			//=====================================================================================
+			// Member Functions
+			//=====================================================================================
 			bool WinBuilder::AdjustSizeAndCreateWindow()
 			{
 				//When you specify window width and height it adds the borders to it, in rendering we want

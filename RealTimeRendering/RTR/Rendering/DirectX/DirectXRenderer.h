@@ -1,3 +1,7 @@
+//=====================================================================================
+// DirectXRennderer.h
+// Main Rendering class that initializes DirectX and manages frame buffers 
+//=====================================================================================
 #pragma once
 #include <RTR/Platform/Platform.h>
 #include <RTR/Rendering/Renderer.h>
@@ -14,14 +18,21 @@ namespace RTR
 		{
 			class DirectXRenderer : public Renderer
 			{
+				//=====================================================================================
+				// Constructors, Destructors, Copy Constructors and Move Constructors
+				//=====================================================================================
 			public:
 				DirectXRenderer() = delete;
 				DirectXRenderer(HINSTANCE& hInstance);
 				virtual ~DirectXRenderer() final override;
-
+				//=====================================================================================
+				// Member Variables
+				//=====================================================================================
 			private:
 				HINSTANCE &hInstance_;
-
+				//=====================================================================================
+				// Member Functions
+				//=====================================================================================
 			public:
 				virtual bool Initialize() final override;
 				virtual void Shutdown() final override;
