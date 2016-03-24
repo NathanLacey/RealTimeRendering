@@ -162,6 +162,7 @@
     <ClInclude Include="RTR\Platform\Windows\WinBuilder.h" />
     <ClInclude Include="RTR\Rendering\DirectX\DirectXRenderer.h" />
     <ClInclude Include="RTR\Rendering\Renderer.h" />
+    <ClInclude Include="RTR\Utilities\Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon1.ico" />
@@ -174,6 +175,7 @@
     <ClCompile Include="RTR\Platform\Windows\WinBuilder.cpp" />
     <ClCompile Include="RTR\Platform\Windows\WinMain.cpp" />
     <ClCompile Include="RTR\Rendering\DirectX\DirectXRenderer.cpp" />
+    <ClCompile Include="RTR\Utilities\Timer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

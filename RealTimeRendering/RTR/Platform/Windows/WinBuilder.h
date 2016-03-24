@@ -28,7 +28,7 @@ namespace RTR
 				//=====================================================================================
 			public:
 				WinBuilder() = delete; //no default constructor
-				WinBuilder(HINSTANCE &hInstance);
+				WinBuilder(HINSTANCE &hInstance, std::wstring appTitle);
 				virtual ~WinBuilder() final override;
 
 

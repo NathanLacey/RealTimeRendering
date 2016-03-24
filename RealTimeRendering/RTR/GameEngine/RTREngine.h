@@ -6,10 +6,11 @@
 //=====================================================================================
 #pragma once
 #include <memory>
-
+#include <string>
 #include <RTR/Platform/Platform.h>
 #include <RTR/Rendering/Renderer.h>
 #include <RTR/Platform/AppBuilder.h>
+#include <RTR/Utilities/Timer.h>
 
 #if RTR_PLATFORM == RTR_PLATFORM_WINDOWS
 #include <Windows.h>
@@ -37,6 +38,8 @@ namespace RTR
 		private:
 			std::unique_ptr<Platform::AppBuilder> app_;
 			std::unique_ptr<Rendering::Renderer> renderer_;
+			std::wstring appTitle_;
+			Utilities::Timer gameTimer_;
 
 			//=====================================================================================
 			// Member Functions
@@ -45,8 +48,9 @@ namespace RTR
 			bool Initialize();
 			void Shutdown();
 			int Run();
-			void Update(const float& deltaTime);
+			void Update();
 			void Render();
+			void CheckFrameStats();
 		};
 	}
 }

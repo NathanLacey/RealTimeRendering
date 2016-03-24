@@ -6,6 +6,8 @@
 //=====================================================================================
 
 #include <RTR/GameEngine/RTREngine.h>
+#include <sstream>
+
 #if RTR_PLATFORM == RTR_PLATFORM_WINDOWS 
 #include <RTR/Platform/Windows/WinBuilder.h>
 #include <RTR/Rendering/DirectX/DirectXRenderer.h>
@@ -20,7 +22,8 @@ namespace RTR
 #if RTR_PLATFORM == RTR_PLATFORM_WINDOWS
 		//Custom Constructor for Windows Platform
 		RTREngine::RTREngine(HINSTANCE &hInstance) :
-			app_(std::make_unique<Platform::Windows::WinBuilder>(hInstance)),
+			appTitle_(L"Real Time Rendering Project"),
+			app_(std::make_unique<Platform::Windows::WinBuilder>(hInstance, L"Real Time Rendering Project")),
 			renderer_(std::make_unique<Rendering::DirectX::DirectXRenderer>(hInstance))
 		{
 		}
@@ -49,8 +52,10 @@ namespace RTR
 		{
 			return app_->Run(this);
 		}
-		void RTREngine::Update(const float & deltaTime)
+		void RTREngine::Update()
 		{
+			gameTimer_.Tick();
+			const float deltaTime = gameTimer_.DeltaTime();
 			//Where game objects get updated
 		}
 
@@ -61,6 +66,21 @@ namespace RTR
 			//Where game objects get drawn
 
 			renderer_->EndFrame();
+		}
+		void RTREngine::CheckFrameStats()
+		{
+			const float deltaTime = gameTimer_.DeltaTime();
+
+			static float timeElapsed = 0.0f;
+			if ((gameTimer_.TotalTimeSeconds() - timeElapsed) >= 1.0f)
+			{
+				//Code To Test Timer
+				std::wostringstream out;
+				out << appTitle_ << L" ,   Delta Time (ms): " << 1000.0f * deltaTime << L"   Total Elapsed time: " << timeElapsed; //Shows time in milliseconds
+				SetWindowText(GetActiveWindow(), out.str().c_str());
+
+				timeElapsed += 1.0f;
+			}
 		}
 	}
 }

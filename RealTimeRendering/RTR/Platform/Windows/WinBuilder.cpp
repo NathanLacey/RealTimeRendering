@@ -16,13 +16,14 @@ namespace RTR
 			// Constructors, Destructors, Copy Constructors and Move Constructors
 			//=====================================================================================
 
-			WinBuilder::WinBuilder(HINSTANCE &hInstance) : 
+			WinBuilder::WinBuilder(HINSTANCE &hInstance, std::wstring appTitle) : 
 				AppBuilder(),
 				screenWidth_(960),
 				screenHeight_(540),
 				windowClass_(L"RealTimeRenderer"),
-				appTitle_(L"Real Time Rendering Project"),
-				hInstance_(hInstance)
+				appTitle_(appTitle),
+				hInstance_(hInstance),
+				hWnd_(nullptr)
 			{
 
 			}
@@ -143,8 +144,11 @@ namespace RTR
 					}
 					else
 					{
-						engine->Update(0.0f);
+						engine->Update();
 						engine->Render();
+
+						//For Diagnostics
+						engine->CheckFrameStats();
 					}
 				}
 

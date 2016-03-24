@@ -40,6 +40,12 @@
     <Filter Include="Header Files\Rendering\DirectX">
       <UniqueIdentifier>{76db9904-fc77-4349-804d-8021c9e34296}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Utilities">
+      <UniqueIdentifier>{25b93450-889e-427c-947b-aa708e800026}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utilities">
+      <UniqueIdentifier>{7432025e-30d7-45ae-8faa-ef6dc80f1ed0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -62,6 +68,9 @@
     </ClInclude>
     <ClInclude Include="RTR\Rendering\DirectX\DirectXRenderer.h">
       <Filter>Header Files\Rendering\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="RTR\Utilities\Timer.h">
+      <Filter>Header Files\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="RTR\Rendering\DirectX\DirectXRenderer.cpp">
       <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="RTR\Utilities\Timer.cpp">
+      <Filter>Source Files\Utilities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
