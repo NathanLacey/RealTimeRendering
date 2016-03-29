@@ -16,13 +16,13 @@ namespace RTR
 			// Constructors, Destructors, Copy Constructors and Move Constructors
 			//=====================================================================================
 
-			WinBuilder::WinBuilder(HINSTANCE &hInstance, std::wstring appTitle) : 
-				AppBuilder(),
-				screenWidth_(960),
-				screenHeight_(540),
+			WinBuilder::WinBuilder(GameEngine::RTREngine* const engine) :
+				AppBuilder(engine),
+				screenWidth_(0),
+				screenHeight_(0),
 				windowClass_(L"RealTimeRenderer"),
-				appTitle_(appTitle),
-				hInstance_(hInstance),
+				appTitle_(L""),
+				hInstance_(nullptr),
 				hWnd_(nullptr)
 			{
 
@@ -86,6 +86,10 @@ namespace RTR
 
 			bool WinBuilder::Initialize()
 			{
+				screenWidth_ = engine_->GetScreenWidth();
+				screenHeight_ = engine_->GetScreenHeight();
+				appTitle_ = engine_->GetAppTitle();
+				hInstance_ = engine_->GetInstance();
 				//Creates a windows class struct that the user can make a description of the window, icon,
 				//style, cursor image, etc
 				WNDCLASSEX wcex;
@@ -128,7 +132,7 @@ namespace RTR
 				return true;
 			}
 
-			int WinBuilder::Run(GameEngine::RTREngine* const engine)
+			int WinBuilder::Run()
 			{
 				// Main message loop:
 				MSG msg = { 0 };
@@ -144,11 +148,11 @@ namespace RTR
 					}
 					else
 					{
-						engine->Update();
-						engine->Render();
+						engine_->Update();
+						engine_->Render();
 
 						//For Diagnostics
-						engine->CheckFrameStats();
+						engine_->CheckFrameStats();
 					}
 				}
 

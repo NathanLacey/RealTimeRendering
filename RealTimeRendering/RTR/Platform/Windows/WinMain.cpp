@@ -10,8 +10,12 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	LPSTR lpCmdLine,
 	int nCmdShow)
 {
+	RTR::AppData appData;
+	appData.appTitle = L"Real Timer Rendering Project";
+	appData.screenWidth = 960;
+	appData.screenHeight = 540;
 	//Instantiate and initialize windows class
-	RTR::GameEngine::RTREngine Game(hInstance);
+	RTR::GameEngine::RTREngine Game(hInstance, appData);
 	if (!Game.Initialize())
 	{
 		return 1;

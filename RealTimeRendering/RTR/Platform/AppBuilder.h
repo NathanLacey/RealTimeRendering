@@ -16,10 +16,13 @@ namespace RTR
 		class AppBuilder
 		{
 		public:
-			AppBuilder() = default;
+			AppBuilder() = delete;
+			AppBuilder(GameEngine::RTREngine* const engine) : engine_(engine) {};
 			virtual ~AppBuilder() = default;
 			virtual bool Initialize() = 0;
-			virtual int Run(GameEngine::RTREngine* const) = 0;
+			virtual int Run() = 0;
+		protected:
+			GameEngine::RTREngine* engine_;
 		};
 	}
 }

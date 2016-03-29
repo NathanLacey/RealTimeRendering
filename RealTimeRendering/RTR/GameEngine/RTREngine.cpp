@@ -21,10 +21,13 @@ namespace RTR
 		//=====================================================================================
 #if RTR_PLATFORM == RTR_PLATFORM_WINDOWS
 		//Custom Constructor for Windows Platform
-		RTREngine::RTREngine(HINSTANCE &hInstance) :
-			appTitle_(L"Real Time Rendering Project"),
-			app_(std::make_unique<Platform::Windows::WinBuilder>(hInstance, L"Real Time Rendering Project")),
-			renderer_(std::make_unique<Rendering::DirectX::DirectXRenderer>(hInstance))
+		RTREngine::RTREngine(HINSTANCE &hInstance, AppData &appData) :
+			appTitle_(appData.appTitle),
+			screenWidth_(appData.screenWidth),
+			screenHeight_(appData.screenHeight),
+			hInstance_(hInstance),
+			app_(std::make_unique<Platform::Windows::WinBuilder>(this)),
+			renderer_(std::make_unique<Rendering::DirectX::DirectXRenderer>(this))
 		{
 		}
 #endif
@@ -50,7 +53,7 @@ namespace RTR
 		}
 		int RTREngine::Run()
 		{
-			return app_->Run(this);
+			return app_->Run();
 		}
 		void RTREngine::Update()
 		{

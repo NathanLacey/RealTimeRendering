@@ -3,9 +3,10 @@
 // Main Rendering class that initializes DirectX and manages frame buffers 
 //=====================================================================================
 #pragma once
-#include <RTR/Platform/Platform.h>
 #include <RTR/Rendering/Renderer.h>
+#include <cstdint>
 
+#include <RTR/Platform/Platform.h>
 #if RTR_PLATFORM == RTR_PLATFORM_WINDOWS
 #include <Windows.h>
 #include <d3d11_2.h>
@@ -23,13 +24,15 @@ namespace RTR
 				//=====================================================================================
 			public:
 				DirectXRenderer() = delete;
-				DirectXRenderer(HINSTANCE& hInstance);
+				DirectXRenderer(GameEngine::RTREngine* const engine);
 				virtual ~DirectXRenderer() final override;
 				//=====================================================================================
 				// Member Variables
 				//=====================================================================================
 			private:
-				HINSTANCE &hInstance_;
+				HINSTANCE hInstance_;
+				uint32_t screenWidth_;
+				uint32_t screenHeight_;
 				//=====================================================================================
 				// Member Functions
 				//=====================================================================================

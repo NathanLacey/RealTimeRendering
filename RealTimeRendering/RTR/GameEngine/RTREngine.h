@@ -18,6 +18,12 @@
 
 namespace RTR
 {
+	struct AppData
+	{
+		uint32_t screenWidth;
+		uint32_t screenHeight;
+		std::wstring appTitle;
+	};
 	namespace GameEngine
 	{
 		class RTREngine
@@ -29,7 +35,7 @@ namespace RTR
 			RTREngine() = default;
 			~RTREngine() = default;
 #if RTR_PLATFORM == RTR_PLATFORM_WINDOWS
-			RTREngine(HINSTANCE &hInstance);
+			RTREngine(HINSTANCE &hInstance, AppData &appData);
 #endif
 
 			//=====================================================================================
@@ -39,8 +45,12 @@ namespace RTR
 			std::unique_ptr<Platform::AppBuilder> app_;
 			std::unique_ptr<Rendering::Renderer> renderer_;
 			std::wstring appTitle_;
+			uint32_t screenWidth_;
+			uint32_t screenHeight_;
 			Utilities::Timer gameTimer_;
-
+#if RTR_PLATFORM == RTR_PLATFORM_WINDOWS
+			HINSTANCE hInstance_;
+#endif
 			//=====================================================================================
 			// Member Functions
 			//=====================================================================================
@@ -51,6 +61,13 @@ namespace RTR
 			void Update();
 			void Render();
 			void CheckFrameStats();
+
+			std::wstring GetAppTitle() const { return appTitle_; }
+			uint32_t GetScreenWidth() const { return screenWidth_; }
+			uint32_t GetScreenHeight() const { return screenHeight_; }
+#if RTR_PLATFORM == RTR_PLATFORM_WINDOWS
+			HINSTANCE GetInstance() const { return hInstance_; }
+#endif
 		};
 	}
 }

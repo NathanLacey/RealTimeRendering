@@ -4,7 +4,6 @@
 // the winMain function
 //=====================================================================================
 #pragma once
-#include <Windows.h>
 #include <cstdlib>
 #include <string>
 #include <cstdint>
@@ -14,6 +13,7 @@
 #include <RTR/Platform/AppBuilder.h>
 
 #if RTR_PLATFORM == RTR_PLATFORM_WINDOWS
+#include <Windows.h>
 
 namespace RTR
 {
@@ -28,7 +28,7 @@ namespace RTR
 				//=====================================================================================
 			public:
 				WinBuilder() = delete; //no default constructor
-				WinBuilder(HINSTANCE &hInstance, std::wstring appTitle);
+				WinBuilder(GameEngine::RTREngine* const);
 				virtual ~WinBuilder() final override;
 
 
@@ -40,9 +40,8 @@ namespace RTR
 				uint32_t screenHeight_;
 				std::wstring windowClass_;
 				std::wstring appTitle_;
-				HINSTANCE& hInstance_;
+				HINSTANCE hInstance_;
 				HWND hWnd_;
-
 				//=====================================================================================
 				// Member Functions
 				//=====================================================================================
@@ -50,7 +49,7 @@ namespace RTR
 				bool AdjustSizeAndCreateWindow();
 			public:
 				virtual bool Initialize() final override;
-				virtual int Run(GameEngine::RTREngine* const) final override;
+				virtual int Run() final override;
 			};
 		}
 	}

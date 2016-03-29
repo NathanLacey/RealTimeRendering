@@ -46,6 +46,9 @@
     <Filter Include="Source Files\Utilities">
       <UniqueIdentifier>{7432025e-30d7-45ae-8faa-ef6dc80f1ed0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Rendering\DirectX">
+      <UniqueIdentifier>{e21cda39-55ca-4e0a-9488-86fef71c938c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -93,11 +96,11 @@
     <ClCompile Include="RTR\GameEngine\RTREngine.cpp">
       <Filter>Source Files\GameEngine</Filter>
     </ClCompile>
-    <ClCompile Include="RTR\Rendering\DirectX\DirectXRenderer.cpp">
-      <Filter>Source Files\Rendering</Filter>
-    </ClCompile>
     <ClCompile Include="RTR\Utilities\Timer.cpp">
       <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="RTR\Rendering\DirectX\DirectXRenderer.cpp">
+      <Filter>Source Files\Rendering\DirectX</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
